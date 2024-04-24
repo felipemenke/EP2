@@ -1,5 +1,3 @@
-tiago='bebe'
-i=10
-while tiago=='bebe' and i <= 15:
-    print('Ae humberto, vem na minha casa')
-    i+=1
+print('Batalha Naval')
+print('Olá guerreiros, prontos para a Batalha ?')
+print('Porém lembre-se, Não suba a a montanha pensando na vista, mas pela a jornada que a subida te trará, não desista!')
