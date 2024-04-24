@@ -12,4 +12,4 @@ def cria_mapa (n):
         j+=1
         
     return lista
-print(cria_mapa(4))
+print(cria_mapa(10))
