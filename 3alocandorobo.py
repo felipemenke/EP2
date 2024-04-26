@@ -1,27 +1,37 @@
 import random
 
-def aloca_navios(mapa,blocos):
-    n=len(mapa)
+def posicao_suporta(mapa, blocos, linha, coluna, orientacao): 
+    n = len(mapa)
+    if orientacao == 'v':
+        if linha + blocos > len(mapa):
+            return False
+        for i in range(blocos):
+            if mapa[linha + i][coluna] != ' ':
+                return False  
+    if orientacao == 'h':
+        if coluna + blocos > len(mapa[0]):
+            return False
+        for i in range(blocos): 
+            if mapa[linha][coluna + i] != ' ':
+                return False
+    return True
+
+def aloca_navios(mapa, blocos):
+    n = len(mapa)
     directions = ['h', 'v'] 
 
     for tamanho_navio in blocos:
-        while True:
-            linha = random.randint(0, n-1)
-            coluna = random.randint(0, n-1)
+        navio=False
+        while not navio:
+            linha = random.randint(0, n - 1)
+            coluna = random.randint(0, n - 1)
             orientacao = random.choice(directions)
-
-      #NÂOOO FIZ     
-
-            
-            if orientacao == 'h':
-                if coluna + tamanho_navio <= n and all(mapa[linha][coluna+i] == ' ' for i in range(tamanho_navio)):
-                    for i in range(tamanho_navio):
-                        mapa[linha][coluna+i] = 'N'
-                    break
-            elif orientacao == 'v':
-                if linha + tamanho_navio <= n and all(mapa[linha+i][coluna] == ' ' for i in range(tamanho_navio)):
-                    for i in range(tamanho_navio):
-                        mapa[linha+i][coluna] = 'N'
-                    break
-    
+            if posicao_suporta(mapa, tamanho_navio, linha, coluna, orientacao):
+                if orientacao == 'v':
+                    for i in range(linha, linha + tamanho_navio):
+                        mapa[i][coluna] = 'N'
+                elif orientacao == 'h':
+                    for j in range(coluna, coluna + tamanho_navio):
+                        mapa[linha][j] = 'N'
+                navio = True
     return mapa
