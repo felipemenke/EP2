@@ -9,7 +9,9 @@ def aloca_navios(mapa,blocos):
             linha = random.randint(0, n-1)
             coluna = random.randint(0, n-1)
             orientacao = random.choice(directions)
-            
+
+      #NÂOOO FIZ     
+
             
             if orientacao == 'h':
                 if coluna + tamanho_navio <= n and all(mapa[linha][coluna+i] == ' ' for i in range(tamanho_navio)):
